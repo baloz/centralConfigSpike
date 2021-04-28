@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  configserver:
+    container_name: configserver1
+    image: consul
+    ports:
+      - "8500:8500"
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    volumes:
+      - ./configserver/config/consulConfig.json:/consul/config/server2.json:ro
+      - ./configserver/cert/:/consul/config/certs/:ro
+    # environment:
+    #   - SPRING_PROFILES_ACTIVE=native
+    #   - spring_security_user_name=admin
+    #   - spring_security_user_password=admin
+    networks:
+      - configServer
+    command: "agent -bootstrap-expect=1"

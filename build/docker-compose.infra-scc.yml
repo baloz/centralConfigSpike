@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  configserver:
+    container_name: configserver2
+    image: docker.pkg.github.com/twcatalyst/configserver/com.thoughtworks.configserver:1.0.0
+    ports:
+      - "8500:8888"
+    volumes:
+      - ./configserver/config:/config
+    environment:
+      - SPRING_PROFILES_ACTIVE=native
+      - spring_security_user_name=admin
+      - spring_security_user_password=admin
+    networks:
+      - configServer
