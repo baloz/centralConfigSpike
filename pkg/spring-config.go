@@ -19,11 +19,11 @@ func readUsingSpringConfig()() {
 }
 
 func fetchconfiguration() ([]byte, error) {
-	req, err := http.NewRequest(http.MethodGet, "http://localhost:8500/spike/dev", nil)
+	req, err := http.NewRequest(http.MethodGet, "http://localhost:8888/spring-config-server/development", nil)
 	if err != nil {
 		log.Print("Error ", err)
 	}
-	req.SetBasicAuth("admin", "admin")
+	//req.SetBasicAuth("admin", "admin")
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 			panic("couldn't load configuration, cannot start. terminating. error: " + err.Error())
@@ -43,7 +43,7 @@ func parseconfiguration(body []byte) {
 			viper.Set(key, value)
 	}
 
-	log.Print(viper.Get("App1"))
+	log.Print(viper.Get("myname"))
 }
 
 type Springcloudconfig struct {
