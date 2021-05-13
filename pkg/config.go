@@ -5,6 +5,6 @@ type Config struct {
 }
 
 func NewConfig() {
-	// readUsingConsule()
-	readUsingSpringConfig()
+	readUsingConsule()
+	//readUsingSpringConfig()
 }

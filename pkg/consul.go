@@ -7,12 +7,12 @@ import (
 )
 
 func readUsingConsule() {
-	viper.AddRemoteProvider("consul", "localhost:8500", "spike")
-	viper.SetConfigType("json") // Need to explicitly set this to json
+	viper.AddRemoteProvider("consul", "localhost:8500", "config/configurations.json")
+	viper.SetConfigType("json")
 	err := viper.ReadRemoteConfig()
 	if err != nil {
 		log.Print(err)
 		return
 	}
-	log.Print("--> ", viper.Get("App3"))
+	log.Print("--> ", viper.Get("myname"))
 }
